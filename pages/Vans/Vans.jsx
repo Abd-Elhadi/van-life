@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Vans() {
     const [vans, setVans] = React.useState([]);
+
     React.useEffect(() => {
         fetch("/api/vans")
             .then(res => res.json())
@@ -10,7 +11,6 @@ export default function Vans() {
     }, [])
 
     const vanElements = vans.map(van => (
-        
         <div key={van.id} className="van-tile">
             <Link to={`/vans/${van.id}`}>
                 <img src={van.imageUrl} />

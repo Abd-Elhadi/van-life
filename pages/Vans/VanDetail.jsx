@@ -2,9 +2,13 @@ import React from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 
 export default function VanDetail() {
-    const params = useParams()
-    const location = useLocation()
+    const params = useParams();
+    const location = useLocation();
     
+    const filterType = location.state?.type || 'all';
+
+    console.log(filterType);
+
     const [van, setVan] = React.useState(null)
 
     React.useEffect(() => {
@@ -20,7 +24,7 @@ export default function VanDetail() {
                 to={`..${path}`}
                 relative="path"
                 className="back-button"
-            >&larr; <span>Back to all vans</span></Link>
+            >&larr; <span>{ `Back to ${filterType} vans` }</span></Link>
             
             {van ? (
                 <div className="van-detail">
